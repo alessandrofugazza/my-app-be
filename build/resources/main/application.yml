@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: my-app-be
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+  flyway:
+    locations: classpath:/db/migration
+    schemas: my-app-db
+    baselineOnMigrate: true
+    enabled: true
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/my-app-db?currentSchema=my-app-db
+    username: postgres
+    password: pain
