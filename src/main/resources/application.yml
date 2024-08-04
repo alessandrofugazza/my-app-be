@@ -10,6 +10,6 @@ spring:
     enabled: true
   datasource:
     driverClassName: org.postgresql.Driver
-    url: 
-    username: 
-    password: 
+    url:
+    username:
+    password:
