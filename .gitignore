@@ -1,8 +1,21 @@
 # Compiled class file
 *.class
 
-# Log file
+# Gradle
+.gradle/
+build/
+
+# IDEA
+.idea/
+*.iml
+
+# Log files
 *.log
+
+# Temporary files
+*.lock
+*.bin
+*.probe
 
 # BlueJ files
 *.ctxt
