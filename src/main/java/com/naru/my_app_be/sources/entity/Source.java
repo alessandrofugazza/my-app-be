@@ -1,7 +1,5 @@
 package com.naru.my_app_be.sources.entity;
 
-import com.naru.my_app_be.sources.enums.ESourceTopic;
-import com.naru.my_app_be.sources.enums.ESourceType;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -13,6 +11,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @ToString
+// CHECK WHATS EVEN THE FUCKING POINT OF THIS ANNOTATION
 //@RequiredArgsConstructor
 @Entity
 @Table(name = "sources")
@@ -23,10 +22,8 @@ public class Source {
     private UUID id;
     private String title;
     private String author;
-    @Enumerated(EnumType.STRING)
-    private ESourceType type;
-    @Enumerated(EnumType.STRING)
-    private ESourceTopic topic;
+    private String type;
+    private String topic;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
