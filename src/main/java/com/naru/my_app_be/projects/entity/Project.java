@@ -19,6 +19,7 @@ public class Project {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
     private String title;
+    private String description;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
