@@ -35,6 +35,7 @@ public class ProjectController {
         return ResponseEntity.ok().body(projectService.saveProject(project));
     }
 
+    // CHECK why is a put being handled without id
     @PutMapping("/")
     public ResponseEntity<Project> updateProject(@RequestBody Project project)
     {
