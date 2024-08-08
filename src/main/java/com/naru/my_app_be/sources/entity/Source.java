@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @NoArgsConstructor
@@ -22,8 +23,13 @@ public class Source {
     private UUID id;
     private String title;
     private String author;
+    private String source;
     private String type;
     private String topic;
+    @ElementCollection
+    @CollectionTable(name = "source_notes", joinColumns = @JoinColumn(name = "source_id"))
+    @Column(name = "note")
+    private List<String> notes;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 

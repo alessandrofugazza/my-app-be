@@ -1,0 +1,2 @@
+ALTER TABLE notes
+ADD COLUMN source VARCHAR(255);

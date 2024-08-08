@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @NoArgsConstructor
@@ -22,6 +23,7 @@ public class Note {
     @Column(columnDefinition = "TEXT")
     private String content;
     private String link;
+    private String source;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
