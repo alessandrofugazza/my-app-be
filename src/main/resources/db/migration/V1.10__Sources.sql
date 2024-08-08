@@ -1,0 +1,2 @@
+ALTER TABLE sources
+ADD COLUMN description VARCHAR(255);

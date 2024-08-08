@@ -23,6 +23,7 @@ public class Source {
     private UUID id;
     private String title;
     private String author;
+    private String description;
     private String source;
     private String type;
     private String topic;
