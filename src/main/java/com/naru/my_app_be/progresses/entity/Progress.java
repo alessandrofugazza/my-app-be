@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @NoArgsConstructor
@@ -22,5 +23,8 @@ public class Progress {
     private String progress;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-
+    @ElementCollection
+    @CollectionTable(name = "progress_notes", joinColumns = @JoinColumn(name = "progress_id"))
+    @Column(name = "note")
+    private List<String> notes;
 }
