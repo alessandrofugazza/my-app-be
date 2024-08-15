@@ -35,11 +35,10 @@ public class ProjectController {
         return ResponseEntity.ok().body(projectService.saveProject(project));
     }
 
-    // CHECK why is a put being handled without id
-    @PutMapping("/")
-    public ResponseEntity<Project> updateProject(@RequestBody Project project)
-    {
-        return ResponseEntity.ok().body(projectService.updateProject(project));
+    @PutMapping("/{id}/todos")
+    public ResponseEntity<Project> addTodoToProject(@PathVariable UUID id, @RequestBody String todo) {
+        Project updatedProject = projectService.addTodoToProject(id, todo);
+        return ResponseEntity.ok().body(updatedProject);
     }
 
     @DeleteMapping("/{id}")

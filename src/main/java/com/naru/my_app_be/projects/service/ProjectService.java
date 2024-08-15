@@ -52,6 +52,20 @@ public class ProjectService {
         return updatedProject;
     }
 
+    public Project addTodoToProject(UUID projectId, String todo) {
+        Project existingProject = projectRepo.findById(projectId)
+                .orElseThrow(() -> new RuntimeException("Project not found"));
+        existingProject.setUpdatedAt(LocalDateTime.now());
+
+        existingProject.getTodos().add(todo);
+        Project updatedProject = projectRepo.save(existingProject);
+
+        log.info("Project with id: {} updated successfully", updatedProject.getId());
+
+        return updatedProject;
+    }
+
+
     public void deleteProjectById (UUID id) {
         projectRepo.deleteById(id);
     }

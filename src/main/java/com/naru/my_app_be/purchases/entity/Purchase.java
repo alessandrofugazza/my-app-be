@@ -1,4 +1,4 @@
-package com.naru.my_app_be.projects.entity;
+package com.naru.my_app_be.purchases.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -13,8 +13,8 @@ import java.util.UUID;
 @Setter
 @ToString
 @Entity
-@Table(name = "projects")
-public class Project {
+@Table(name = "purchases")
+public class Purchase {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,10 +22,9 @@ public class Project {
     private String title;
     private String description;
     @ElementCollection
-    @CollectionTable(name = "project_todos", joinColumns = @JoinColumn(name = "project_id"))
-    @OrderColumn(name = "todo_order")
-    @Column(name = "todo")
-    private List<String> todos;
+    @CollectionTable(name = "purchase_notes", joinColumns = @JoinColumn(name = "purchase_id"))
+    @Column(name = "note")
+    private List<String> notes;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
