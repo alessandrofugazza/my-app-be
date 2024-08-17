@@ -60,6 +60,14 @@ public class ProjectController {
             return ResponseEntity.ok().body(projectService.updateProjectDescription(id, newDescription));
         }
 
+    @PostMapping("/{id}/todos")
+    public ResponseEntity<Project> addTodo(
+            @PathVariable UUID id,
+            @RequestBody String newTodo) {
+        return ResponseEntity.ok().body(projectService.addTodoToProject(id, newTodo));
+
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteProjectById(@PathVariable UUID id)
     {

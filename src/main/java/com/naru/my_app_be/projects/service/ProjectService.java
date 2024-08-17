@@ -7,6 +7,7 @@ import com.naru.my_app_be.projects.repository.ProjectRepo;
 import com.naru.my_app_be.purchases.entity.Purchase;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -78,16 +79,15 @@ public Project updateProjectDescription (UUID id, String newDescription) {
         return updatedProject;
     }
 
-    public Project addTodoToProject(UUID projectId, String todo) {
-        Project existingProject = projectRepo.findById(projectId)
-                .orElseThrow(() -> new RuntimeException("Project not found"));
-        existingProject.setUpdatedAt(LocalDateTime.now());
+    public Project addTodoToProject(UUID projectId, String newTodo) {
+        Project project = projectRepo.findById(projectId)
+                .orElseThrow(() -> new ResourceNotFoundException("Project not found with id " + projectId));
+        List<String> todos = project.getTodos();
+        todos.add(newTodo); // Automatically appends to the end of the list
+        project.setTodos(todos); // Reassign to ensure the list updates the order column
+        Project updatedProject = projectRepo.save(project);
 
-        existingProject.getTodos().add(todo);
-        Project updatedProject = projectRepo.save(existingProject);
-
-        log.info("Project with id: {} updated successfully", updatedProject.getId());
-
+        log.info("Description of project with id: {} updated successfully", updatedProject.getId());
         return updatedProject;
     }
 
