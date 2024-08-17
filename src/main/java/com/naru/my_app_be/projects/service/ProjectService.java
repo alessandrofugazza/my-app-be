@@ -1,8 +1,10 @@
 package com.naru.my_app_be.projects.service;
 
 
+import com.naru.my_app_be.exceptions.ResourceNotFoundException;
 import com.naru.my_app_be.projects.entity.Project;
 import com.naru.my_app_be.projects.repository.ProjectRepo;
+import com.naru.my_app_be.purchases.entity.Purchase;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -49,6 +51,30 @@ public class ProjectService {
         Project updatedProject = projectRepo.save(project);
 
         log.info("Project with id: {} updated successfully", project.getId());
+        return updatedProject;
+    }
+
+    public Project updateProjectTitle (UUID id, String newTitle) {
+        Project project = projectRepo.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Project not found with id " + id));
+        project.setTitle(newTitle);
+        project.setUpdatedAt(LocalDateTime.now());
+
+        Project updatedProject = projectRepo.save(project);
+
+        log.info("Title of project with id: {} updated successfully", updatedProject.getId());
+        return updatedProject;
+    }
+    
+public Project updateProjectDescription (UUID id, String newDescription) {
+        Project project = projectRepo.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Project not found with id " + id));
+        project.setDescription(newDescription);
+        project.setUpdatedAt(LocalDateTime.now());
+
+        Project updatedProject = projectRepo.save(project);
+
+        log.info("Description of project with id: {} updated successfully", updatedProject.getId());
         return updatedProject;
     }
 

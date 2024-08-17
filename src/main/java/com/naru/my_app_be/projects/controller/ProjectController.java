@@ -2,6 +2,7 @@ package com.naru.my_app_be.projects.controller;
 
 import com.naru.my_app_be.projects.service.ProjectService;
 import com.naru.my_app_be.projects.entity.Project;
+import com.naru.my_app_be.purchases.entity.Purchase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -40,6 +41,24 @@ public class ProjectController {
         Project updatedProject = projectService.addTodoToProject(id, todo);
         return ResponseEntity.ok().body(updatedProject);
     }
+
+    @PatchMapping("/{id}/title")
+    public ResponseEntity<Project> updateProjectTitle(@PathVariable UUID id, @RequestBody String newTitle)
+    {
+        return ResponseEntity.ok().body(projectService.updateProjectTitle(id, newTitle));
+    }
+
+    @PatchMapping("/{id}/description")
+    public ResponseEntity<Project> updateProjectDescription(@PathVariable UUID id, @RequestBody String newDescription)
+    {
+        return ResponseEntity.ok().body(projectService.updateProjectDescription(id, newDescription));
+    }
+
+    @PatchMapping("/{id}/todos")
+        public ResponseEntity<Project> updateProjectTodos(@PathVariable UUID id, @RequestBody String newDescription)
+        {
+            return ResponseEntity.ok().body(projectService.updateProjectDescription(id, newDescription));
+        }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteProjectById(@PathVariable UUID id)
