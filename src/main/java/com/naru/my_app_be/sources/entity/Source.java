@@ -27,6 +27,7 @@ public class Source {
     private String source;
     private String type;
     private String topic;
+    private String macroTopic;
     @ElementCollection
     @CollectionTable(name = "source_notes", joinColumns = @JoinColumn(name = "source_id"))
     @Column(name = "note")
