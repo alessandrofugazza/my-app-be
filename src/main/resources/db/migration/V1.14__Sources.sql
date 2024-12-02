@@ -1,2 +1,0 @@
-ALTER TABLE sources
-ADD COLUMN macro_topic VARCHAR(255);
