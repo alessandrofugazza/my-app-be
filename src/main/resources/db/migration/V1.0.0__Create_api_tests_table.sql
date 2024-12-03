@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS playgrounds (
+CREATE TABLE IF NOT EXISTS api_tests (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     title VARCHAR(255),
     created_at TIMESTAMP,
