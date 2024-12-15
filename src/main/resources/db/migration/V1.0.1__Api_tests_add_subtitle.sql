@@ -1,0 +1,2 @@
+ALTER TABLE api_tests
+ADD COLUMN subtitle VARCHAR(255);

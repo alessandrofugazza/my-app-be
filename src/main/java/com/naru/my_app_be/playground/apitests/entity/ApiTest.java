@@ -22,6 +22,7 @@ public class ApiTest {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
     private String title;
+    private String subtitle;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
