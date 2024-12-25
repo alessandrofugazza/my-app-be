@@ -28,6 +28,11 @@ public class ApiTestController {
     {
         return ResponseEntity.ok().body(apiTestService.getApiTestById(id));
     }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<ApiTest>> searchApiTests(@RequestParam String query) {
+        return ResponseEntity.ok().body(apiTestService.searchApiTests(query));
+    }
     
     @PostMapping("/")
     public ResponseEntity<ApiTest> saveApiTest(@RequestBody ApiTest apiTest)
