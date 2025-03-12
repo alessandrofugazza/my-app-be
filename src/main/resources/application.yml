@@ -5,7 +5,7 @@ spring:
     property-naming-strategy: SNAKE_CASE
   flyway:
     locations: classpath:/db/migration
-    schemas: my-app-db
+    schemas: my-database
     baselineOnMigrate: true
     enabled: true
   datasource:
